@@ -8,7 +8,7 @@ A vertical fullscreen scroll implementation that snaps in place, similar to the 
 
 ```
 dependencies:
-  persistent_bottom_nav_bar: ^5.0.2
+  posa_bottom_bar: ^latest_version
 ```
 
 # 2-Import the  Persistent Bottom Navigation Bar  package in your dart file.
