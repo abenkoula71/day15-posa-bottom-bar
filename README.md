@@ -4,7 +4,7 @@
 
 A vertical fullscreen scroll implementation that snaps in place, similar to the TikTok app.
 
-# 1-Add the  Persistent Bottom Navigation Bar dependency in your pubspec.yaml file.
+# 1-Add the  Persistent posa_bottom_bar dependency in your pubspec.yaml file.
 
 ```
 dependencies:
