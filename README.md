@@ -4,14 +4,14 @@
 
 A vertical fullscreen scroll implementation that snaps in place, similar to the TikTok app.
 
-# 1-Add the  Persistent posa_bottom_bar dependency in your pubspec.yaml file.
+# 1-Add the  posa_bottom_bar dependency in your pubspec.yaml file.
 
 ```
 dependencies:
   posa_bottom_bar: ^latest_version
 ```
 
-# 2-Import the  Persistent Bottom Navigation Bar  package in your dart file.
+# 2-Import the   posa_bottom_bar  package in your dart file.
 
 ```
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
