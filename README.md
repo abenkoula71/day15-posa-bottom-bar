@@ -14,7 +14,7 @@ dependencies:
 # 2-Import the   posa_bottom_bar  package in your dart file.
 
 ```
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:posa_bottom_bar/posa_bottom_bar.dart';
 
 ```
 
