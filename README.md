@@ -18,81 +18,70 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 ```
 
-# 3-Persistent bottom navigation bar uses PersistentTabController as its controller. Here is how to declare it:
-
-```
-PersistentTabController _controller;
-
-_controller = PersistentTabController(initialIndex: 0);
-
-```
 
 # 4-use him like this
 
 ```
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
-  @override
+@override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-        context,
-        controller: _controller,
-        screens: _buildScreens(),
-        items: _navBarsItems(),
-        confineInSafeArea: true,
-        backgroundColor: Colors.white, // Default is Colors.white.
-        handleAndroidBackButtonPress: true, // Default is true.
-        resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
-        hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: Colors.white,
-        ),
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: ItemAnimationProperties( // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 200),
-          curve: Curves.ease,
-        ),
-        screenTransitionAnimation: ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
-          animateTabTransition: true,
-          curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
-        ),
-        navBarStyle: NavBarStyle.style1, // Choose the nav bar style with this property.
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("POSA BOTTOM BAR"),
+        centerTitle: true,
+      ),
+      body: PosaBottomBar(
+        // CHILD IS REQUIRED
+        child: pages
+            .elementAt(currentIndex), // ADD HERE YOUR PAGE OR PAGES NAVIGATOR
+        // ICONS IS REQUIRED
+        icons: const [
+          Ionicons.home_outline,
+          Ionicons.settings_outline,
+          Ionicons.bookmark_outline,
+          Ionicons.person_outline,
+        ],
+        // ONCHANGE IS REQUIRED
+        onChanged: (i) {
+          setState(() {
+            debugPrint("TAP $i");
+            currentIndex = i;
+          });
+        },
+        // ON LONG PRESS FNC
+        onLongPress: (i) {
+          setState(() {
+            debugPrint("LONG PRESS $i");
+          });
+        },
+        alignment: Alignment.bottomCenter,
+        // ------ height and margin for bottom bar ----- //
+        height: 0.16,
+        margin: 0.05,
+        // ------  ----- //
+
+        // ------ Elevation & Color for bottom bar ----- //
+        elevation: 10,
+        shadowColor: Colors.black,
+        // ------  ----- //
+
+        borderRadius: 35, // RADUIS (FOR BOTTOM BAR)
+        backgroundColor: Colors.blueAccent, // BACKGROUND COLORS (FOR BOTTOM BAR)
+        dotColor: Colors.white, // COLORS OF DOT
+        iconColor: Colors.white, // COLORS OF ICON
+        dotSize: 5.0, iconSize: 24.0, // SIZE OF DOT AND ICONS
+
+        // ------ Animation elevation and opacity ----- //
+        isElevationAnimation: false,
+        elevationAnimationOpacity: 0.3,
+        elevationAnimationDuration: const Duration(milliseconds: 1500),
+        // ------  ----- //
+
+        // ------ Animation Icons ------ //
+        isAnimatedIcon: false,
+        // ------  ------ //
+      ),
     );
   }
-}
-```
-
-```
-List<Widget> _buildScreens() {
-        return [
-          MainScreen(),
-          SettingsScreen()
-        ];
-    }
-```
-
-```
-List<PersistentBottomNavBarItem> _navBarsItems() {
-        return [
-            PersistentBottomNavBarItem(
-                icon: Icon(CupertinoIcons.home),
-                title: ("Home"),
-                activeColorPrimary: CupertinoColors.activeBlue,
-                inactiveColorPrimary: CupertinoColors.systemGrey,
-            ),
-            PersistentBottomNavBarItem(
-                icon: Icon(CupertinoIcons.settings),
-                title: ("Settings"),
-                activeColorPrimary: CupertinoColors.activeBlue,
-                inactiveColorPrimary: CupertinoColors.systemGrey,
-            ),
-        ];
-    }
 ```
 
 
